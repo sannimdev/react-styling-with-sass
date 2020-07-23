@@ -19,30 +19,32 @@ const colorStyles = css`
   }}
 `;
 
+const sizes = {
+  large: {
+    height: "3rem",
+    lineHeight: "3rem",
+    fontSize: "1.25rem",
+  },
+  medium: {
+    height: "2.25rem",
+    lineHeight: "2.25rem",
+    fontSize: "1rem",
+  },
+  small: {
+    height: "1.75rem",
+    lineHeight: "1.75rem",
+    fontSize: "0.875rem",
+  },
+};
+
 const sizeStyles = css`
-  ${(props) =>
-    props.size === "large" &&
-    css`
-      height: 3rem;
-      line-height: 3rem;
-      font-size: 1.25rem;
-    `};
-
-  ${(props) =>
-    props.size === "medium" &&
-    css`
-      height: 2.25rem;
-      line-height: 2.25rem;
-      font-size: 1rem;
-    `};
-
-  ${(props) =>
-    props.size === "small" &&
-    css`
-      height: 1.75rem;
-      line-height: 1.75rem;
-      font-size: 0.875rem;
-    `};
+  /*  크기 */
+  ${({ size }) => css`
+    /*{size} => props.size 를 비구조화 할당*/
+    height: ${sizes[size].height};
+    line-height: ${sizes[size].lineHeight};
+    font-size: ${sizes[size].fontSize};
+  `}
 `;
 
 const Button = styled.button`

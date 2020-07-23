@@ -19,6 +19,32 @@ const colorStyles = css`
   }}
 `;
 
+const sizeStyles = css`
+  ${(props) =>
+    props.size === "large" &&
+    css`
+      height: 3rem;
+      line-height: 3rem;
+      font-size: 1.25rem;
+    `};
+
+  ${(props) =>
+    props.size === "medium" &&
+    css`
+      height: 2.25rem;
+      line-height: 2.25rem;
+      font-size: 1rem;
+    `};
+
+  ${(props) =>
+    props.size === "small" &&
+    css`
+      height: 1.75rem;
+      line-height: 1.75rem;
+      font-size: 0.875rem;
+    `};
+`;
+
 const Button = styled.button`
   /* 공통 스타일 */
   display: inline-flex;
@@ -31,22 +57,17 @@ const Button = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  /* 크기 */
-  height: 2.25rem;
-  line-height: 2.25rem;
-  font-size: 1rem;
-
   /* 기타 */
   & + & {
     margin-left: 1rem;
   }
-  /* 버튼 컬러 */
   ${colorStyles}
+  ${sizeStyles}
 `;
 
-function StyledButton({ children, color, ...rest }) {
+function StyledButton({ children, color, size, ...rest }) {
   return (
-    <Button color={color} {...rest}>
+    <Button color={color} size={size} {...rest}>
       {children}
     </Button>
   );
@@ -54,6 +75,7 @@ function StyledButton({ children, color, ...rest }) {
 
 StyledButton.defaultProps = {
   color: "blue",
+  size: "medium",
 };
 
 export default StyledButton;

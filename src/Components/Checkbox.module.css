@@ -1,0 +1,33 @@
+/* node-sass만 설치돼 있다면 scss도 마찬가지로 사용 가능 (컴포넌트명.module.scss) */
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label {
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox span {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  margin-right: 0.25rem;
+  color: #adb5bd;
+}
+
+.checked {
+  color: #339af0;
+}

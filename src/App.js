@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import "./App.scss";
 import StyledButton from "./Components/StyledButton";
+import Dialog from "./Components/Dialog";
 
 const AppBlock = styled.div`
   width: 512px;
@@ -23,39 +24,37 @@ const palette = {
   pink: "#f06595",
 };
 function App() {
+  const [dialog, setDialog] = useState(false);
+  const onClick = () => {
+    setDialog(true);
+  };
+  const onConfirm = () => {
+    console.log("확인");
+    setDialog(false);
+  };
+  const onCancel = () => {
+    console.log("취소");
+    setDialog(false);
+  };
   return (
     <ThemeProvider theme={{ palette }}>
-      <AppBlock>
-        <ButtonGroup>
-          <StyledButton size="large" color="pink">
-            Button
+      <>
+        <AppBlock>
+          <StyledButton color="pink" size="large" onClick={onClick}>
+            삭제
           </StyledButton>
-          <StyledButton>Button</StyledButton>
-          <StyledButton size="small" color="gray">
-            Button
-          </StyledButton>
-        </ButtonGroup>
-        <ButtonGroup>
-          <StyledButton size="large" color="pink" outline>
-            Button
-          </StyledButton>
-          <StyledButton outline>Button</StyledButton>
-          <StyledButton size="small" color="gray" outline>
-            Button
-          </StyledButton>
-        </ButtonGroup>
-        <ButtonGroup>
-          <StyledButton size="large" color="pink" fullWidth>
-            Button
-          </StyledButton>
-          <StyledButton size="large" fullWidth>
-            Button
-          </StyledButton>
-          <StyledButton size="large" color="gray" fullWidth>
-            Button
-          </StyledButton>
-        </ButtonGroup>
-      </AppBlock>
+        </AppBlock>
+        <Dialog
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제"
+          cancelText="취소"
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          visible={dialog}
+        >
+          데이터를 정말 삭제?
+        </Dialog>
+      </>
     </ThemeProvider>
   );
 }

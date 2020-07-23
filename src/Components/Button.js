@@ -4,8 +4,12 @@ import "./Button.scss";
 
 // size: large, medium, small
 // color: blue(default), pink, gray
-function Button({ children, size, color }) {
-  return <button className={classNames("Button", size, color)}>{children}</button>;
+function Button({ children, size, color, outline, fullWidth }) {
+  return (
+    <button className={classNames("Button", size, color, { outline, fullWidth })}>
+      {children}
+    </button>
+  );
 }
 
 // 가장 정석적인 방법
